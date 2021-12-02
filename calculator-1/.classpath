@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.osgi_3.16.300.v20210525-1715.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.osgi_3.16.300.v20210525-1715.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.core.commands_3.10.0.v20210401-0744.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.core.commands_3.10.0.v20210401-0744.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.equinox.common_3.15.0.v20210518-0604.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.equinox.common_3.15.0.v20210518-0604.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.equinox.registry_3.10.200.v20210503-1606.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.equinox.registry_3.10.200.v20210503-1606.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.core.runtime_3.22.0.v20210506-1025.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.core.runtime_3.22.0.v20210506-1025.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.text_3.12.0.v20210512-1644.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.text_3.12.0.v20210512-1644.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.swt.cocoa.macosx.x86_64_3.116.100.v20210602-2209.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.swt.cocoa.macosx.x86_64_3.116.100.v20210602-2209.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.jface_3.22.200.v20210401-0958.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.jface_3.22.200.v20210401-0958.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.jface.text_3.18.0.v20210512-1640.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.jface.text_3.18.0.v20210512-1640.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.ui.workbench_3.122.200.v20210506-1640.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.ui.workbench_3.122.200.v20210506-1640.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/com.ibm.icu_67.1.0.v20200706-1749.jar" sourcepath="/Users/sam/.p2/pool/plugins/com.ibm.icu_67.1.0.v20200706-1749.jar"/>
+	<classpathentry kind="lib" path="/Users/sam/.p2/pool/plugins/org.eclipse.ui.forms_3.11.100.v20210108-1139.jar" sourcepath="/Users/sam/.p2/pool/plugins/org.eclipse.ui.forms_3.11.100.v20210108-1139.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
