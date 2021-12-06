@@ -75,7 +75,6 @@ public class bookingZone {
 		for(int y = 0; y<(buttons.length / 10); y++) {
 			for(int x = 0; x<(buttons.length / 5); x++) {
 				if(counter < 50) {
-					System.out.println(counter);
 					buttons[counter] = new JRadioButton("");
 					buttons[counter].setBounds(85+(28 * x), 60+(23 * y), 28, 23);
 					int counterHere = counter;
