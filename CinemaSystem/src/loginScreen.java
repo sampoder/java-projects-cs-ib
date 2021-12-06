@@ -67,7 +67,7 @@ public class loginScreen {
 		
 		JLabel passwordLabel = new JLabel("Password");
 		passwordLabel.setFont(new Font("Phantom Sans 0.7", Font.BOLD, 13));
-		passwordLabel.setBounds(37, 103, 61, 31);
+		passwordLabel.setBounds(37, 103, 103, 31);
 		frame.getContentPane().add(passwordLabel);
 		
 		JLabel usernameLabel = new JLabel("Username");

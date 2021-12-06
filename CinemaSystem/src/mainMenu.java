@@ -81,6 +81,7 @@ public class mainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				bookingZone bz = new bookingZone();
+				bz.movieName = "Encanto";
 				bz.bookingZone();
 				frame.dispose();
 			}
@@ -99,6 +100,7 @@ public class mainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				bookingZone bz = new bookingZone();
+				bz.movieName = "Eternals";
 				bz.bookingZone();
 				frame.dispose();
 			}
@@ -117,6 +119,7 @@ public class mainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				bookingZone bz = new bookingZone();
+				bz.movieName = "Spiderman 3";
 				bz.bookingZone();
 				frame.dispose();
 			}
@@ -135,6 +138,7 @@ public class mainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				bookingZone bz = new bookingZone();
+				bz.movieName = "Clifford";
 				bz.bookingZone();
 				frame.dispose();
 			}
@@ -153,6 +157,7 @@ public class mainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				bookingZone bz = new bookingZone();
+				bz.movieName = "Dune";
 				bz.bookingZone();
 				frame.dispose();
 			}
