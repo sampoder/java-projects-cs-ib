@@ -96,8 +96,6 @@ public class bookingZone {
 
 			}
 		}
-		
-		
 
 		btnBook.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
