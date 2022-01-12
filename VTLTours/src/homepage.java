@@ -68,6 +68,10 @@ public class homepage {
 	@SuppressWarnings("deprecation")
 	private void initialize() {
 
+		String JdbcURL = "jdbc:mysql://localhost:8889/VTLTours?useSSL=false";
+		String Username = "root";
+		String password = "root";
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 262, 325);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -120,16 +124,11 @@ public class homepage {
 
 		}
 
-		String[] availableTimesArray = new String[availableTimesList.size()];
-
-		for (int i = 0; i < availableTimesList.size(); i++) {
-			availableTimesArray[i] = availableTimesList.get(i);
+		String[] availableTimesArray = new String[availableTimesList.size() + 1];
+		availableTimesArray[0] = "Select An Option";
+		for (int i = 1; i < availableTimesList.size() + 1; i++) {
+			availableTimesArray[i] = availableTimesList.get(i - 1);
 		}
-
-		JComboBox selectDate = new JComboBox();
-		selectDate.setModel(new DefaultComboBoxModel(availableTimesArray));
-		selectDate.setBounds(14, 107, 239, 27);
-		frame.getContentPane().add(selectDate);
 
 		JLabel lblDate = new JLabel("Date & Time");
 		lblDate.setFont(new Font("SF Pro Rounded", Font.PLAIN, 13));
@@ -161,12 +160,15 @@ public class homepage {
 						addedY = 10;
 					}
 					buttons[counter].setBounds(12 + (28 * x), 157 + (18 * y) + addedY, 28, 23);
+					buttons[counter].setEnabled(false);
 					int counterHere = counter;
 					buttons[counter].addItemListener(new ItemListener() {
 						public void itemStateChanged(ItemEvent e) {
 							if (e.getStateChange() == ItemEvent.SELECTED) {
 								seats.add(counterHere);
-								btnBook.setEnabled(true);
+								if(enterName.getText() != "") {
+									btnBook.setEnabled(true);
+								}
 								btnBook.setText("Book Tickets (for $" + (seats.size() * 2) + ")");
 							} else if (e.getStateChange() == ItemEvent.DESELECTED) {
 								for (int i = 0; i < seats.size(); i++) {
@@ -174,6 +176,7 @@ public class homepage {
 										seats.remove(i);
 									}
 								}
+								btnBook.setText("Book Tickets (for $" + (seats.size() * 2) + ")");
 								if (seats.size() == 0) {
 									btnBook.setEnabled(false);
 								}
@@ -186,5 +189,87 @@ public class homepage {
 
 			}
 		}
+		
+		JComboBox selectDate = new JComboBox();
+		selectDate.setModel(new DefaultComboBoxModel(availableTimesArray));
+		selectDate.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					String selectedItem = (String) e.getItem();
+					if(selectedItem == "Select An Option") {
+						for(int q = 0; q < buttons.length; q++) {
+							buttons[q].setEnabled(false);
+						}
+						btnBook.setEnabled(false);
+					}
+					else {
+						for(int q = 0; q < buttons.length; q++) {
+							buttons[q].setEnabled(true);
+						}
+						Connection con = null;
+
+						try {
+							con = DriverManager.getConnection(JdbcURL, Username, password);
+							try (Statement stmt = con.createStatement()) {
+								String selectSql = "SELECT * FROM `Bookings` where Date ='" + selectedItem + "'";
+								try (ResultSet resultSet = stmt.executeQuery(selectSql)) {
+									while(resultSet.next()) {
+										buttons[resultSet.getInt("Seat")].setEnabled(false);
+									}
+								}
+							}
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+				}
+			}
+		});
+		selectDate.setBounds(14, 107, 239, 27);
+		frame.getContentPane().add(selectDate);
+
+		btnBook.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				try {
+					if (btnBook.isEnabled()) {
+						seats.sort(null);
+						for (int i = 0; i < seats.size(); i++) {
+							String sqlStatement = "INSERT INTO `Bookings` (`Date`, `Booker`, `Seat`) VALUES ('"
+									+ String.valueOf(selectDate.getSelectedItem()) + "', '" + enterName.getText()
+									+ "', '" + seats.get(i) + "');";
+							System.out.println(sqlStatement);
+							Connection con = DriverManager.getConnection(JdbcURL, Username, password);
+							try (Statement stmt = con.createStatement()) {
+								stmt.executeUpdate(sqlStatement);
+							}
+						}
+						String message = "Thank you for booking ";
+						for (int i = 0; i < seats.size(); i++) {
+							String[] letters = { "A", "B", "C", "D", "E" };
+							int seatNo = (seats.get(i) % 8) + 1;
+							message += seatNo;
+							message += letters[seats.get(i) / 8];
+							if (i == (seats.size() - 1)) {
+								message += " to take the bus";
+								message += ".";
+							} else if (i == (seats.size() - 2)) {
+								message += " & ";
+							} else {
+								message += ", ";
+							}
+						}
+						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.PLAIN_MESSAGE);
+						frame.dispose();
+						homepage theHomepage = new homepage();
+						theHomepage.main(new String[] {});
+					}
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+
+			}
+		});
 	}
 }
